@@ -1,0 +1,23 @@
+<div class="form-group row">
+    <label class="col-sm-2">Trener First Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="FirstName"
+        placeholder="Enter First Name">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2">Trener Last Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="LastName"
+        placeholder="Enter Last Name">
+    </div>
+</div>
+
+<button (click)="addTrener()" *ngIf="trener.Id==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateTrener()" *ngIf="trener.Id!=0" class="btn btn-primary">
+    Update
+</button>

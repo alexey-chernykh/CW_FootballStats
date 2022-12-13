@@ -1,0 +1,30 @@
+<div class="form-group row">
+  <label class="col-sm-2">Match ID</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="MatchId"
+           placeholder="Enter Match ID">
+  </div>
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2">Player Full Name</label>
+  <div class="col-sm-10">
+    <select class="form-select" id="selectPlayer" aria-label="Default select example" (click)="this.refreshSelect()" [(ngModel)]="PlayerId"></select>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2">Reached goal at(minute):</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="GoalMinute"
+           placeholder="Enter Minute">
+  </div>
+</div>
+
+<button (click)="addGoal()" *ngIf="goal.Id==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateGoal()" *ngIf="goal.Id!=0" class="btn btn-primary">
+    Update
+</button>

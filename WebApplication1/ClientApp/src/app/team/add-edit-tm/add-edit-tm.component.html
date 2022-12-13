@@ -1,0 +1,51 @@
+<div class="form-group row">
+    <label class="col-sm-2">Team Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="TeamName"
+        placeholder="Enter Team Name">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2" for="btnselect" id="lbHerb">Team Herb</label>
+    <div class="col-sm-10">
+        <span class="btn btn-success btn-file m-5" id="btnselect">
+          Browse Image...
+          <input type="file" (change)="selectFile($event)">
+        </span>
+    </div>
+  <img *ngIf="Herb" src="{{Herb}}" alt="">
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2">Team City</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="City"
+           placeholder="Enter Team City">
+  </div>
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2">Team Home Stadion</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="HomeStadion"
+           placeholder="Enter Team Home Stadion">
+  </div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2">Trener</label>
+<div class="col-sm-10">
+  <select class="form-select" id="selectTrener" aria-label="Default select example" (click)="this.refreshTrenerSelect()" [(ngModel)]="TrenerId"></select>
+</div>
+</div>
+
+
+
+<button (click)="addTeam()" *ngIf="team.Id==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateTeam()" *ngIf="team.Id!=0" class="btn btn-primary">
+    Update
+</button>

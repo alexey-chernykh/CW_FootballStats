@@ -1,0 +1,62 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="AddUpcoming()" data-backdrop="static" data-keyboard="false">
+  Add New Match Schedule
+</button>
+
+<!-- Modal for adding/editing -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-up [upcoming]="upcoming" *ngIf="activateAddEditUpCom">
+        </app-add-edit-up>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for watching something -->
+<div class="modal fade"  id="watchModal" tabindex="-1" aria-labelledby="watchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="watchModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <div class="d-inline-block" id="box"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th>ID</th>
+          <th>Upcoming Match Name</th>
+          <th>Playtime</th>
+          <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of upcomingList">
+        <td>{{dataItem.Id}}</td>
+        <td>{{getMatchName(dataItem.MatchId)}}</td>
+        <td>{{normalize(dataItem.PlayDate)}}</td>
+        <td>
+          <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#watchModal"
+                  (click)="MatchDetails(dataItem)">Match Details</button>
+          <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="EditUpcoming(dataItem)">Edit</button>
+            <button type="button" class="btn btn-primary" (click)="deleteClick(dataItem)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

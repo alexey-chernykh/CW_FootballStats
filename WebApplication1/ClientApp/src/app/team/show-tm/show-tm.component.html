@@ -1,0 +1,67 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="AddTeam()" data-backdrop="static" data-keyboard="false">
+  Add Team
+</button>
+
+<!-- Modal for adding/editing -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-tm [team]="team" *ngIf="activateAddEditTmCom">
+        </app-add-edit-tm>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for watching players -->
+<div class="modal fade"  id="watchModal" tabindex="-1" aria-labelledby="watchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="watchModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <div class="d-inline-block" id="box"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th>Team ID</th>
+          <th>Team Name</th>
+          <th>Herb</th>
+          <th>City</th>
+          <th>Home Stadion</th>
+          <th>Trener Full Name</th>
+          <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of teamList">
+        <td>{{dataItem.Id}}</td>
+        <td>{{dataItem.TeamName}}</td>
+        <td><img *ngIf="dataItem.Herb" src="{{dataItem.Herb}}" alt="Real Madrid Herb" loading="lazy" width="100" height="auto"> </td>
+        <td>{{dataItem.City}}</td>
+        <td>{{dataItem.HomeStadion}}</td>
+        <td>{{getTrenerFullName(dataItem.TrenerId)}}</td>
+        <td>
+          <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#watchModal"
+                  (click)="WatchRoster(dataItem)">Watch Roster</button>
+          <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="EditTeam(dataItem)">Edit</button>
+            <button type="button" class="btn btn-primary" (click)="deleteClick(dataItem)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
