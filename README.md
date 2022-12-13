@@ -1,6 +1,8 @@
 # CW_FootballStats
 Course work for IT STEP based on Angular 15, ASP.NET Core 3.1, MSSQL Server
 
+In ClientApp folder you need to import node_modules that angular project should work fine.
+
 This is code based on method "DatabaseFirst", if you want to test it 
 how it works you need to create database first. 
 Code for creating database (sql query):
